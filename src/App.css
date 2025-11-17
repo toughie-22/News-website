@@ -1,0 +1,590 @@
+/* --- Define Color Variables (Light Mode Default) --- */
+:root {
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f0f0f0; /* Used for hover states, selected items */
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-text-brand: #1a1a1a;
+  --color-border: #e0e0e0;
+  --color-header-bg: #fff;
+  --color-shadow: rgba(0, 0, 0, 0.05);
+  --color-button-primary-bg: #000;
+  --color-button-primary-text: #fff;
+}
+
+/* --- Dark Mode Definition FIX: Targets the wrapper div in App.jsx --- */
+.dark-mode {
+  --color-bg-primary: #1e1e1e;
+  --color-bg-secondary: #2a2a2a;
+  --color-text-primary: #eeeeee;
+  --color-text-secondary: #bbbbbb;
+  --color-text-brand: #ffffff;
+  --color-border: #3a3a3a;
+  --color-header-bg: #1e1e1e;
+  --color-shadow: rgba(255, 255, 255, 0.05); /* Lighter shadow for dark mode */
+  --color-button-primary-bg: #444;
+  --color-button-primary-text: #fff;
+}
+
+/* --- Global Reset & Variables --- */
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  /* Uses variables defined in :root or .dark-mode */
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* --- Login Page Styles (New) --- */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-bg-primary);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 30px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--color-shadow);
+  width: 350px;
+  background-color: var(--color-bg-primary);
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--color-text-primary);
+}
+
+.login-form input {
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+.login-form button {
+  padding: 10px;
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
+  border-radius: 4px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+/* --- End Login Page Styles --- */
+
+/* --- Header / Top Nav --- */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  /* Uses variables */
+  background-color: var(--color-header-bg);
+  box-shadow: 0 1px 3px var(--color-shadow);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  /* Uses variables */
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  /* Uses variables */
+  color: var(--color-text-brand);
+  margin-left: 5px;
+}
+
+.top-nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.top-nav-center {
+  display: flex;
+  gap: 15px;
+}
+
+.top-cat-btn {
+  font-size: 0.9rem;
+  /* Uses variables */
+  color: var(--color-text-secondary);
+  padding: 5px 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.top-cat-btn:hover,
+.top-cat-btn.active {
+  /* Uses variables */
+  color: var(--color-text-brand);
+  border-bottom: 2px solid var(--color-text-brand);
+}
+
+.top-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  /* Uses variables */
+  color: var(--color-text-secondary);
+  position: relative;
+}
+
+.icon-btn {
+  cursor: pointer;
+}
+
+/* --- Filter Bar / Secondary Categories & Search --- */
+
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  width: 100%;
+  /* Aligns content center (Search + Category Bar) */
+  align-items: center;
+  /* FIX: Added border to clearly separate the main header content on mobile/desktop */
+  border-bottom: 1px solid var(--color-border);
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.search-input {
+  flex-grow: 1;
+  /* ADJUSTED: Padding matches new icon position */
+  padding: 8px 10px 8px 30px;
+  /* Uses variables */
+  border: 1px solid var(--color-border);
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 0.9rem;
+  height: 36px;
+  /* Ensures input background and text color also change */
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+.search-input-icon {
+  position: absolute;
+  /* ADJUSTED: Moved icon to 15px from the left */
+  left: 15px;
+  /* Uses variables */
+  color: var(--color-text-secondary);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* NEW STYLE: Search Submit Button */
+.search-submit-btn {
+  /* Uses variables */
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
+  border: 1px solid var(--color-button-primary-bg);
+  padding: 8px 15px;
+  border-radius: 0 4px 4px 0;
+  height: 36px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.category-filter-bar {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 5px;
+}
+
+.cat-filter-btn {
+  font-size: 0.95rem;
+  padding: 5px 15px;
+  border-radius: 4px;
+  /* Uses variables */
+  color: var(--color-text-secondary);
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.cat-filter-btn.active {
+  /* Uses variables */
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
+  font-weight: 600;
+}
+
+/* --- Hero Section --- */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(35%);
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+}
+
+.hero-content {
+  color: #fff;
+  max-width: 50%;
+  z-index: 10;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0 0 15px 0;
+  line-height: 1.1;
+}
+
+.hero-watermark {
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  transform: translateY(-50%);
+  font-size: 18vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.05);
+  z-index: 1;
+  pointer-events: none;
+  line-height: 1;
+  letter-spacing: -5px;
+}
+
+/* --- Country Selector (Hamburger) Styles FIX --- */
+
+.country-selector-wrapper {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.country-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  /* Uses variables */
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 5px 0;
+  box-shadow: 0 4px 8px var(--color-shadow);
+  z-index: 50;
+  min-width: 150px;
+  transform: translateY(5px);
+}
+
+.country-dropdown button {
+  display: block;
+  width: 100%;
+  padding: 8px 15px;
+  text-align: left;
+  /* Uses variables */
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+}
+
+.country-dropdown button:hover {
+  /* Uses variables */
+  background-color: var(--color-bg-secondary);
+}
+.country-dropdown button.selected {
+  /* Uses variables */
+  background-color: var(--color-border);
+  font-weight: 600;
+}
+
+/* --- News Cards (FIXED STRUCTURE) --- */
+
+.recent-articles-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 40px 0 20px 0;
+}
+
+.news-item {
+  /* ENFORCES A FIXED HEIGHT FOR ALL CARDS for uniform grid */
+  height: 400px;
+  /* Uses variables */
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: border 0.3s, background-color 0.3s;
+}
+
+.item-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  /* CORRECTED CALCULATION with spaces */
+  height: calc(100% - 180px);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  line-height: 1.3;
+
+  /* Limit title to 3 lines (Fixed vendor prefix warning) */
+  overflow: hidden;
+  display: -webkit-box;
+  /* FIX: Added standard property to resolve linter warning */
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  /* Uses variables */
+  color: var(--color-text-secondary);
+  margin-bottom: 15px;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.read-more-card-btn {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 6px 12px;
+  /* Uses variables */
+  background-color: var(--color-button-primary-bg);
+  color: var(--color-button-primary-text);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* --- Footer Styles --- */
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
+  width: 100%;
+  align-items: center;
+}
+/* --- End Footer Styles --- */
+
+/* ======================================= */
+/* 📱 --- Mobile Responsiveness (Media Queries) --- 📱 */
+/* ======================================= */
+
+/* Target devices up to 768px wide (standard tablet/large phone portrait) */
+@media (max-width: 768px) {
+  /* --- Global Container Adjustment --- */
+  .container {
+    padding: 0 10px;
+  }
+
+  /* --- Header / Top Nav Adjustments (Improved Spacing) --- */
+  .top-nav {
+    /* Use slightly more horizontal padding for better spacing from edges */
+    padding: 10px 15px;
+  }
+
+  .brand-name {
+    font-size: 1.1rem; /* Slightly smaller logo text */
+    margin-left: 0; /* Ensures it is aligned with the new 15px padding */
+  }
+
+  .top-nav-center {
+    /* FIX: Hides the upper row of duplicated categories that appeared in the screenshot */
+    display: none;
+  }
+
+  .top-nav-right {
+    /* Reduced gap for space efficiency */
+    gap: 15px;
+  }
+  /* --- End Header / Top Nav Adjustments --- */
+
+  /* --- Filter Bar / Search Adjustments --- */
+  .filter-bar {
+    padding: 10px; /* Adjust padding to match top-nav */
+  }
+
+  .search-input-container {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-input-icon {
+    /* Mobile specific position */
+    left: 10px;
+  }
+
+  .search-input {
+    /* Retained mobile specific padding */
+    padding-left: 30px;
+  }
+
+  .category-filter-bar {
+    /* Makes categories horizontally scrollable */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cat-filter-btn {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    padding: 4px 10px;
+  }
+
+  /* --- Hero Section Adjustments --- */
+  .hero-section {
+    height: 250px;
+    margin-top: 5px;
+  }
+
+  .hero-overlay {
+    padding: 0 15px;
+    align-items: flex-end;
+    padding-bottom: 20px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+  }
+
+  .hero-watermark {
+    display: none;
+  }
+
+  /* --- News Cards Adjustments --- */
+
+  .news-item {
+    /* Allows cards to stack and dictate their own height */
+    height: auto;
+    max-height: none;
+    margin-bottom: 15px;
+  }
+
+  .recent-articles-title {
+    font-size: 1.5rem;
+    margin: 20px 0 15px 0;
+  }
+
+  .item-img {
+    height: 150px;
+  }
+
+  .card-body {
+    padding: 10px;
+    height: auto;
+  }
+
+  .card-title {
+    font-size: 1rem;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+  }
+
+  .card-text {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+
+  /* --- Login Page Adjustments --- */
+  .login-form {
+    width: 90%;
+    max-width: 350px;
+    margin: 10px;
+    padding: 20px;
+  }
+}
+
+/* Target smaller phones (up to 480px wide) */
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.3rem;
+  }
+
+  .search-input,
+  .search-submit-btn {
+    height: 32px;
+    padding: 6px 10px;
+  }
+}
